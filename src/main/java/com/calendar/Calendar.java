@@ -47,9 +47,9 @@ public class Calendar {
           "lipiec",
           "sierpień",
           "wrzesień",
-          "październik",
-          "listopad",
-          "grudzień"
+                "październik",
+                "listopad",
+                "grudzień"
         };
 
     int monthNumberInArray = monthNumber - 1;
@@ -57,39 +57,24 @@ public class Calendar {
     System.out.println("Miesiąc to: " + monthName);
 
     // Handling day of week
-    int[][] daysOfWeek = {
-      {1, 8, 15, 22, 29},
-      {2, 9, 16, 23, 30},
-      {3, 10, 17, 24, 31},
-      {4, 11, 18, 25},
-      {5, 12, 19, 26},
-      {6, 13, 20, 27},
-      {7, 14, 21, 28}
+    String dayOfWeek = switch (dayNumber) {
+      case 1, 8, 15, 22, 29 -> "poniedziałek";
+      case 2, 9, 16, 23, 30 -> "wtorek";
+      case 3, 10, 17, 24, 31 -> "środa";
+      case 4, 11, 18, 25 -> "czwartek";
+      case 5, 12, 19, 26 -> "piątek";
+      case 6, 13, 20, 27 -> "sobota";
+      case 7, 14, 21, 28 -> "niedziela";
+      default -> "Unknown";
     };
-    String dayOfWeek = "";
-    for (int i = 0; i < 7; i++) {
-      for (int j = 0; j < daysOfWeek[i].length; j++) {
-        if (dayNumber == daysOfWeek[i][j]) {
-          switch (i) {
-            case 0 -> dayOfWeek = "poniedziałek";
-            case 1 -> dayOfWeek = "wtorek";
-            case 2 -> dayOfWeek = "środa";
-            case 3 -> dayOfWeek = "czwartek";
-            case 4 -> dayOfWeek = "piątek";
-            case 5 -> dayOfWeek = "sobota";
-            case 6 -> dayOfWeek = "niedziela";
-          }
-        }
-      }
-    }
-    System.out.println("It's: " + dayOfWeek);
+
     if ((monthNumber == 4 || monthNumber == 6 || monthNumber == 9 || monthNumber == 11)
-        & dayNumber > 30) {
+            & dayNumber > 30) {
       System.out.println(
-          "Miesiąc " + monthName + " ma tylko 30 dni w miesiącu. Podano za dużo dni!");
+              "Miesiąc " + monthName + " ma tylko 30 dni w miesiącu. Podano za dużo dni!");
     } else if (monthNumber == 2 & dayNumber > 28) {
       System.out.println(
-          "Miesiąc " + monthName + " ma tylko 28 dni w miesiącu. Podano za dużo dni!");
+              "Miesiąc " + monthName + " ma tylko 28 dni w miesiącu. Podano za dużo dni!");
     } else {
       System.out.println("monthNumber: " + monthNumber + ", dayNumber: " + dayNumber);
       System.out.println(
